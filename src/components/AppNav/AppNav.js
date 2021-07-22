@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
+import { Navbar } from 'react-bootstrap';
 
 class AppNav extends Component {
   render() {
     const { navItems, handleNavClick } = this.props;
 
     return (
-      <nav>
-        {navItems.map((navItem, index) =>
+      <Navbar>
+        {navItems.map((navItem, index) => {
           <a href="#" key={ index } onClick={ () => handleNavClick(navItem.value)} >
            | {navItem.label} |
           </a>
+        }
         )}
-      </nav>
+      </Navbar>
     )
   }
 }

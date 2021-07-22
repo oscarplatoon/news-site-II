@@ -22,8 +22,8 @@ class App extends Component {
 
     return (
       <div>
-        <hr />
         <AppNav navItems={navItems} handleNavClick={(clickedItem) => { console.log(clickedItem) }} />
+        <hr />
         <Router>
           <div>
             <Route exact path='/' component={HomePage}/>
