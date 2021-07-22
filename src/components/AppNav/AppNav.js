@@ -8,7 +8,7 @@ class AppNav extends Component {
       <nav>
         {navItems.map((navItem) =>
           <a href="#" onClick={ () => handleNavClick(navItem.value)} >
-            {navItem.label} |
+           | {navItem.label} |
           </a>
         )}
       </nav>
