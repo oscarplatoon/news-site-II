@@ -4,8 +4,10 @@ import News from '../data/news.json';
 
 class ArticlePage extends Component {
   render() {
+    console.log(this.props.match.params.articleID-1)
+    let article = News[this.props.match.params.articleID]
     return (
-      <div>Article Page</div>
+      <div> <Article {...article} /> </div>
     );
   }
 }

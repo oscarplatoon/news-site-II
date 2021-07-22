@@ -8,7 +8,7 @@ class Article extends Component {
         <h1>{ title }</h1>
         <p>{ createdDate }</p>
         { byline && <h2>{ byline }</h2> }
-        { image && <img src={ image }/> }
+        { this.props.multimedia[0] && <img src={ this.props.multimedia[0].url }/> }
         <p>{ abstract }</p>
       </div>
     )
