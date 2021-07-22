@@ -2,23 +2,20 @@ import React, { Component } from 'react';
 import ArticleTeaser from '../ArticleTeaser/ArticleTeaser.js'
 import { ListGroup } from 'react-bootstrap'
 
-function ArticleList(props) {
- 
-  let elements = props.articles.map((article, idx) => {
+class ArticleList extends Component {
+  getAllTeasers = (articles) => {
+    return articles.map((article, idx) => {
+      return <ArticleTeaser key={idx} id={idx} title={ article.title } created_date={article.created_date} handleTitleClick={this.props.handleTitleClick} />
+    })
+  }
+
+  render() {
     return (
       <div>
-        <ListGroup className='shadow p-3 mb-3'>
-          <ListGroup.Item>
-            <ArticleTeaser key={ idx } id={ idx } createdDate = { article.create_date } title={ article.title } handleTitleClick= {props.handleTitleClick}/>
-          </ListGroup.Item>
-        </ListGroup>
+        { this.getAllTeasers(this.props.articles) } 
       </div>
-    )
-  })
-  
-  return (
-    <div>{ elements } </div>
     );
+  }
 }
 
 export default ArticleList;
