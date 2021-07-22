@@ -3,8 +3,10 @@ import News from './data/news.json';
 import navItems from './data/navItems.json';
 import './App.css';
 import AppNav from './components/AppNav/AppNav.js';
-import ArticleTeaser from './components/ArticleTeaser/ArticleTeaser.js'
-import Article from './components/Article/Article.js'
+import ArticleList from './components/ArticleList/ArticleList.js'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage.js';
+import ArticlePage from './pages/ArticlePage.js';
 
 class App extends Component {
   constructor(props) {
@@ -13,40 +15,24 @@ class App extends Component {
     const randomArticle = News[randomArticleIndex];
 
     this.state = {
-      navItems: navItems,
-      article: {
-        id: randomArticleIndex,
-        title: randomArticle.title,
-        abstract: randomArticle.abstract,
-        byline: randomArticle.byline,
-        image: randomArticle.multimedia.length ? randomArticle.multimedia[0].url : null,
-        created_date: randomArticle.created_date
-      }
+      navItems: navItems
     }
   }
 
   render() {
-    const { article, navItems } = this.state
+    const { navItems } = this.state
 
     return (
       <div>
         <h1>AppNav Component</h1>
         <hr />
-
         <AppNav navItems={navItems} handleNavClick={(clickedItem) => { console.log(clickedItem) }} />
-
-        <h1>ArticleTeaser Component</h1>
-        <hr />
-
-        <ArticleTeaser
-          id={article.id}
-          title={article.title}
-          created_date={article.created_date}
-          handleTitleClick={(articleID) => { console.log(articleID) }} />
-
-        <h1>Article Component</h1>
-        <hr />
-        <Article {...article} />
+        <Router>
+          <div>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/articles/:articleID" component={ArticlePage} />
+          </div>
+        </Router>      
       </div>
     );
   }
