@@ -1,23 +1,32 @@
-function ArticleTeaser(props) {
+import React, { Component } from "react";
 
-  const handleClick = (event) => {
-    event.preventDefault()
-    props.handleTitleClick(props.id)
+
+class ArticleTeaser extends Component {
+  render() {
+    const { id, title, creaded_date: createdDate, handleTitleClick} = this.props
+    // handleClick(event) {
+    //   event.preventDefault()
+    //   handleTitleClick(id +1) // This keeps articles/0 from happening.
+    // }
+    return (
+        <div>
+          <div className='link'>
+            <a href='#' onClick={ (event) => {
+              handleTitleClick(id+1);
+              event.preventDefault();
+              } 
+            }>
+              { title }
+            </a>
+            <p>
+              { createdDate }
+            </p>
+          </div>
+        </div>
+      )
+  
+    }
   }
-
-  return (
-    <div>
-      <div className='link'>
-        <a href='#' onClick={ handleClick }>
-          {props.title}
-        </a>
-        <p>
-          { props.created_date }
-        </p>
-      </div>
-    </div>
-  )
-}
 
 export default ArticleTeaser;
 
