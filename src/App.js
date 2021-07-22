@@ -21,7 +21,7 @@ class App extends Component {
     const { article, navItems } = this.state
 
     return (
-      <div>
+      <div className='bg-dark'>
         <AppNav navItems={navItems} handleNavClick={(clickedItem) => { console.log(clickedItem) }} />
         <hr />
         <Router>

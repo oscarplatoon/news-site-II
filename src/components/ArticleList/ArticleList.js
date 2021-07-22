@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
 import ArticleTeaser from '../ArticleTeaser/ArticleTeaser.js'
-import { ListGroup } from 'react-bootstrap'
+import { ListGroup, Container } from 'react-bootstrap'
 
 class ArticleList extends Component {
   getAllTeasers = (articles) => {
     return articles.map((article, idx) => {
-      return <ArticleTeaser key={idx} id={idx} title={ article.title } created_date={article.created_date} handleTitleClick={this.props.handleTitleClick} />
+      return (
+        <ListGroup.Item as='a' key={idx} action variant='dark' className='shadow p-3 m-2 rounded'>
+          <ArticleTeaser id={idx} title={ article.title } created_date={article.created_date} handleTitleClick={this.props.handleTitleClick} />
+        </ListGroup.Item>
+      )
     })
   }
 
   render() {
     return (
-      <div>
-        { this.getAllTeasers(this.props.articles) } 
-      </div>
+      <Container>
+        <ListGroup>
+          { 
+            this.getAllTeasers(this.props.articles)
+          } 
+        </ListGroup>
+      </Container>
     );
   }
 }

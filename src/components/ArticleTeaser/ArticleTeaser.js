@@ -10,7 +10,7 @@ class ArticleTeaser extends Component {
     // }
     return (
         <div>
-          <div className='link'>
+          <div className='text-light'>
             <a href='#' onClick={ (event) => {
               handleTitleClick(id+1);
               event.preventDefault();
