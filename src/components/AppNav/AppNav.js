@@ -6,7 +6,7 @@ class AppNav extends Component {
     const { navItems, handleNavClick } = this.props;
 
     return (
-      <Navbar>
+      <Navbar className='navbar-dark'>
         {navItems.map((navItem, index) => {
           <a href="#" key={ index } onClick={ () => handleNavClick(navItem.value)} >
            | {navItem.label} |
