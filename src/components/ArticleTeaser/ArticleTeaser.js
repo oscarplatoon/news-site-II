@@ -1,30 +1,33 @@
-import React, { Component } from 'react';
+function ArticleTeaser(props) {
 
-class ArticleTeaser extends Component {
-  render() {
-    /* Note: the { created_date: createdDate } syntax in this destructure is
-        taking the value of created_date from this.props and setting it to
-        a new variable called createdDate
-    */
-    const { id, title, created_date: createdDate, handleTitleClick } = this.props;
-    return (
-      <div>
-        <a onClick={ () => handleTitleClick(id) }>{ title }</a>
-        <p>{ createdDate }</p>
-      </div>
-    )
+  const handleClick = (event) => {
+    event.preventDefault()
+    props.handleTitleClick(props.id)
   }
+
+  return (
+    <div>
+      <div className='link'>
+        <a href='#' onClick={ handleClick }>
+          {props.title}
+        </a>
+        <p>
+          { props.created_date }
+        </p>
+      </div>
+    </div>
+  )
 }
 
 export default ArticleTeaser;
 
-
-// Functional solution:
-// function ArticleTeaser({ id, title, created_date: createdDate, handleTitleClick }) {
-//   return (
-//     <div>
-//       <a onClick={ () => handleTitleClick(id) }>{ title }</a>
-//       <p>{ createdDate }</p>
-//     </div>
-//   );
-// }
+// The `ArticleTeaser`
+// component should:
+//   1. Display the `title`
+// inside of an `<a>`
+// tag.
+// 2. When the `title`
+// `<a>`
+// tag is clicked, it should call `this.props.handleTitleClick(this.props.id);`.Will arrow functions be useful here ?
+//   3. Display the `created_date` in a `<p>`
+// tag.
