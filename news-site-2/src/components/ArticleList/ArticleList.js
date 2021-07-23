@@ -3,9 +3,40 @@ import ArticleTeaser from '../ArticleTeaser/ArticleTeaser.js'
 
 import { ListGroup } from 'react-bootstrap';
 
-class ArticleList extends Component {
+// ---- CLASS BASED COMPONENT
+// class ArticleList extends Component {
 
-  getAllTeasers = (articles) => {
+//   getAllTeasers = (articles) => {
+//     return articles.map((article, idx) => {
+//       return (
+//         <ListGroup.Item key={idx} className="shadow p-3 m-2 bg-white rounded">
+//           <ArticleTeaser
+//             id={idx}
+//             createdDate={article.created_date}
+//             title={article.title}
+//             handleTitleClick={this.props.handleTitleClick}
+//             />
+//         </ListGroup.Item>
+//       )
+//     })
+//   }
+
+//   render() {
+//     return (
+//       <ListGroup>
+//         {
+//           this.getAllTeasers(this.props.articles)
+//         }
+//       </ListGroup>
+//     );
+//   }
+// }
+
+// ---- FUNCTIONAL COMPONENT
+const ArticleList = (props) => {
+  const { articles, handleTitleClick } = props;
+
+  const getAllTeasers = (articles) => {
     return articles.map((article, idx) => {
       return (
         <ListGroup.Item key={idx} className="shadow p-3 m-2 bg-white rounded">
@@ -13,22 +44,20 @@ class ArticleList extends Component {
             id={idx}
             createdDate={article.created_date}
             title={article.title}
-            handleTitleClick={this.props.handleTitleClick}
-            />
+            handleTitleClick={handleTitleClick}
+          />
         </ListGroup.Item>
       )
     })
   }
 
-  render() {
-    return (
-      <ListGroup>
-        {
-          this.getAllTeasers(this.props.articles)
-        }
-      </ListGroup>
-    );
-  }
+  return (
+    <ListGroup>
+      {
+        getAllTeasers(articles)
+      }
+    </ListGroup>
+  );
 }
 
 export default ArticleList;

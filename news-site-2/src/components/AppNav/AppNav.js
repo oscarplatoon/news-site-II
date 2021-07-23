@@ -1,24 +1,45 @@
 import React, { Component } from 'react';
 
-class AppNav extends Component {
+// ---- CLASS BASED COMPONENT
+// class AppNav extends Component {
+//   render() {
+//     const { navItems } = this.props;
 
-  render() {
-    const { navItems, handleNavClick } = this.props;
+//     const createNavItems = () => {
+//       return navItems.map((navItem, idx) => {
+//         return <a key={idx} href={() => console.log(navItem.value)}>{ navItem.label }</a>
 
-    const createNavItems = () => {
-      return navItems.map((navItem, idx) => {
-        return <a key={idx} href='#' onClick={() => handleNavClick(navItem.value)}>{ navItem.label }</a>
-      })
-    }
+//       })
+//     }
 
-    return (
-      <nav>
+//     return (
+//       <nav>
+//       {
+//         createNavItems()
+//       }
+//       </nav>
+//     )
+//   }
+// }
+
+// ---- FUNCTIONAL COMPONENT
+const AppNav = (props) => {
+  const { navItems } = props;
+
+  const createNavItems = () => {
+    return navItems.map((navItem, idx) => {
+      return <a key={idx} href='#'>{ navItem.label }</a>
+
+    })
+  }
+
+  return (
+    <nav>
       {
         createNavItems()
       }
-      </nav>
-    )
-  }
+    </nav>
+  )
 }
 
 export default AppNav;
