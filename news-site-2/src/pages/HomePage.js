@@ -4,9 +4,10 @@ import News from '../data/news.json';
 
 class HomePage extends Component {
   render() {
+    console.log(this.props.history)
     return (
       <div>
-        <ArticleList articles={News} handleTitleClick={(articleID) => console.log("TODO - use React Router\'s history.push() method to change the page to /article/${articleID}") } />
+        <ArticleList articles={News} handleTitleClick={(articleID) => this.props.history.push(`/articles/${articleID+1}`) } />
       </div>
     );
   }

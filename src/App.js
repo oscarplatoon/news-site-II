@@ -3,7 +3,7 @@ import News from './data/news.json';
 import navItems from './data/navItems.json';
 import './App.css';
 import AppNav from './components/AppNav/AppNav.js';
-import ArticleTeaser from './components/ArticleTeaser/ArticleTeaser.js'
+import ArticleList from './components/ArticleList/ArticleList';
 import Article from './components/Article/Article.js'
 
 class App extends Component {
@@ -35,14 +35,10 @@ class App extends Component {
 
         <AppNav navItems={navItems} handleNavClick={(clickedItem) => { console.log(clickedItem) }} />
 
-        <h1>ArticleTeaser Component</h1>
+        <h1>ArticleList Component</h1>
         <hr />
 
-        <ArticleTeaser
-          id={article.id}
-          title={article.title}
-          created_date={article.created_date}
-          handleTitleClick={(articleID) => { console.log(articleID) }} />
+        <ArticleList />
 
         <h1>Article Component</h1>
         <hr />
